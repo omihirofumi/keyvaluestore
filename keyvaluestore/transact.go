@@ -1,4 +1,4 @@
-package kvs
+package keyvaluestore
 
 type EventType byte
 

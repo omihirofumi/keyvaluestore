@@ -1,4 +1,4 @@
-package kvs
+package keyvaluestore
 
 import (
 	"database/sql"

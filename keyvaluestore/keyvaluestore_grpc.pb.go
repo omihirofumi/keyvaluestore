@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.21.12
-// source: kvs.proto
+// source: keyvaluestore.proto
 
 package keyvaluestore
 
@@ -173,5 +173,5 @@ var KeyValue_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "kvs.proto",
+	Metadata: "keyvaluestore.proto",
 }
