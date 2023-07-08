@@ -23,3 +23,10 @@ message DeleteRequest {
 
 message DeleteResponse {}
 
+service KeyValue {
+  rpc Get(GetRequest) returns (GetResponse);
+
+  rpc Put(PutRequest) returns (PutResponse);
+
+  rpc Delete(DeleteRequest) returns (DeleteResponse);
+}
