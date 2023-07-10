@@ -20,6 +20,14 @@ func (s *server) Get(ctx context.Context, r *pb.GetRequest) (*pb.GetResponse, er
 	return &pb.GetResponse{Value: value}, err
 }
 
+func (s *server) Put(ctx context.Context, r *pb.PutRequest) (*pb.PutResponse, error) {
+	log.Printf("Received PUT key=%v value=%v", r.Key, r.Value)
+
+	err := Put(r.Key, r.Value)
+
+	return &pb.PutResponse{}, err
+}
+
 func main() {
 	s := grpc.NewServer()
 	pb.RegisterKeyValueServer(s, &server{})
