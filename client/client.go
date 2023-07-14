@@ -11,8 +11,13 @@ import (
 )
 
 func main() {
-	conn, err := grpc.Dial("localhost:50051",
-		grpc.WithInsecure(), grpc.WithBlock(), grpc.WithTimeout(time.Second))
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+	defer cancel()
+
+	opts := []grpc.DialOption{grpc.WithInsecure(), grpc.WithBlock()}
+
+	conn, err := grpc.DialContext(ctx, "localhost:50051",
+		opts...)
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}
@@ -26,9 +31,6 @@ func main() {
 		action, key = os.Args[1], os.Args[2]
 		value = strings.Join(os.Args[3:], " ")
 	}
-
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
-	defer cancel()
 
 	switch action {
 	case "get":
